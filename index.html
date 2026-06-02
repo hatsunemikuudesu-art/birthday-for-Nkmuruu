@@ -231,7 +231,20 @@ transform:translateY(110vh) rotate(360deg);
 }
 }
 
-@media(max-width:768px){
+.balloon{
+position:fixed;
+bottom:-100px;
+font-size:40px;
+pointer-events:none;
+animation:floatUp linear infinite;
+z-index:50;
+}
+
+@keyframes floatUp{
+to{
+transform:translateY(-120vh);
+}
+}
 
 .hero h1{
 font-size:2.5rem;
@@ -274,9 +287,14 @@ Karuru (Nkmuru) 💙
 </h1>
 
 <p>
-Sweet Sixteen ✨<br><br>
-Untuk seseorang yang baik,
-lucu, dan rajin 🌸
+Sweet Sixteen Celebration ✨🌸<br><br>
+Untuk Karuru 💙
+
+Seseorang yang baik,
+selalu membawa tawa,
+dan tidak pernah berhenti berusaha.
+
+Hari ini adalah harimu ✨🌸
 </p>
 
 <button class="enter-btn" id="enterBtn">
@@ -286,14 +304,6 @@ lucu, dan rajin 🌸
 </section>
 
 <section>
-
-<h2>⏳ Birthday Countdown</h2>
-
-<div id="timer">
-Loading...
-</div>
-
-</section>
 
 <section>
 
@@ -311,17 +321,17 @@ Loading...
 
 <div class="card">
 🌸<br><br>
-Baik
+Baik bangettt
 </div>
 
 <div class="card">
 😂<br><br>
-Lucu
+Lucuuuuuu
 </div>
 
 <div class="card">
 📚<br><br>
-Rajin
+Rajinnnn
 </div>
 
 </div>
@@ -334,14 +344,20 @@ Rajin
 
 <div class="gallery">
 
-<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
+<img src="https://id.pinterest.com/pin/189291991354473924/">
 
-<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330">
+<img src="https://id.pinterest.com/pin/904097693959407873/">
 
-<img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df">
+<img src="https://id.pinterest.com/pin/443041682114869062/">
 
-<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1">
+<img src="https://id.pinterest.com/pin/76913106136946768/">
+  
+<img src="https://id.pinterest.com/pin/905927281316460965/">
 
+<img src="https://id.pinterest.com/pin/202239839512851520/">
+
+<img src="https://id.pinterest.com/pin/585819864074576676/">
+  
 </div>
 
 </section>
@@ -468,47 +484,88 @@ document.getElementById("enterBtn").addEventListener("click",()=>{
 });
 
 
-// Countdown
-
-const targetDate = new Date();
-
-targetDate.setDate(targetDate.getDate()+30);
-
-function updateCountdown(){
-
-  const now = new Date();
-
-  const distance = targetDate - now;
-
-  const days = Math.floor(distance/(1000*60*60*24));
-
-  const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-
-  const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-
-  const seconds = Math.floor((distance%(1000*60))/1000);
-
-  document.getElementById("timer").innerHTML =
-  `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-}
-
-setInterval(updateCountdown,1000);
-
-updateCountdown();
-
 
 // Gift Surprise
 
 document.getElementById("giftBtn").addEventListener("click",()=>{
 
 document.getElementById("giftResult").innerHTML = `
+for(let i=0;i<80;i++){
 
-💙 +100 Happiness<br>
-🍀 +100 Luck<br>
-🌟 +100 Success<br>
-🎂 +100 Birthday Energy<br>
-✨ ∞ Good Memories
+const conf=document.createElement("div");
+
+conf.innerHTML=["🎉","✨","🌸","💙"][Math.floor(Math.random()*4)];
+
+conf.style.position="fixed";
+conf.style.left=Math.random()*100+"vw";
+conf.style.top="-20px";
+conf.style.fontSize="25px";
+conf.style.zIndex="9999";
+
+document.body.appendChild(conf);
+
+let y=-20;
+
+const drop=setInterval(()=>{
+
+y+=5;
+
+conf.style.top=y+"px";
+
+if(y>window.innerHeight){
+
+clearInterval(drop);
+conf.remove();
+
+}
+
+},20);
+
+}
+for(let i=0;i<30;i++){
+
+const fire=document.createElement("div");
+
+fire.innerHTML="✨";
+
+fire.style.position="fixed";
+fire.style.left="50%";
+fire.style.top="50%";
+fire.style.fontSize="30px";
+fire.style.zIndex="9999";
+
+document.body.appendChild(fire);
+
+const angle=Math.random()*Math.PI*2;
+const speed=Math.random()*200+50;
+
+let x=0;
+let y=0;
+
+const explode=setInterval(()=>{
+
+x+=Math.cos(angle)*5;
+y+=Math.sin(angle)*5;
+
+fire.style.transform=
+`translate(${x}px,${y}px)`;
+
+if(Math.abs(x)>speed){
+
+clearInterval(explode);
+fire.remove();
+
+}
+
+},20);
+
+}
+
+💙 +1000000000 Happiness<br>
+🍀 +1000000000 Luck<br>
+🌟 +1000000000 Success<br>
+🎂 +1000000000 Birthday Energy<br>
+✨ ∞ Good Memories :)
 
 `;
 
@@ -572,6 +629,23 @@ sparkle.remove();
 },800);
 
 });
+
+for(let i=0;i<12;i++){
+
+const balloon=document.createElement("div");
+
+balloon.className="balloon";
+
+balloon.innerHTML="🎈";
+
+balloon.style.left=Math.random()*100+"vw";
+
+balloon.style.animationDuration=
+(Math.random()*15+10)+"s";
+
+document.body.appendChild(balloon);
+
+}
 </script>
 
 </body>
