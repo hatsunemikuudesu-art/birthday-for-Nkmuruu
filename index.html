@@ -1,7 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<title>Karuru Birthday</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Karuru 💙</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+text-align:center;
+background:linear-gradient(135deg,#dff1ff,#f5fbff,#ffeef8);
+overflow:hidden;
+}
+
+h1{
+margin-top:100px;
+font-size:60px;
+color:#5caeff;
+}
+
+p{
+font-size:24px;
+}
+
+.sakura{
+position:fixed;
+top:-20px;
+font-size:20px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+button{
+padding:15px 30px;
+font-size:20px;
+border:none;
+border-radius:50px;
+background:#6eb6ff;
+color:white;
+cursor:pointer;
+}
+</style>
 </head>
 
 <body>
@@ -9,9 +54,25 @@
 <h1>🎂 Happy Birthday Karuru 💙</h1>
 
 <p>
-Selamat ulang tahun yang ke-16!
-Semoga selalu bahagia, sehat, dan sukses 🌸✨
+Selamat ulang tahun ke-16! 🌸✨
+<br>
+Semoga selalu sehat, bahagia, dan sukses!
 </p>
+
+<button onclick="alert('🎉 Surprise! Happy Birthday Karuru! 💙')">
+🎁 Open Surprise
+</button>
+
+<script>
+for(let i=0;i<40;i++){
+let s=document.createElement('div');
+s.className='sakura';
+s.innerHTML='🌸';
+s.style.left=Math.random()*100+'vw';
+s.style.animationDuration=(Math.random()*8+5)+'s';
+document.body.appendChild(s);
+}
+</script>
 
 </body>
 </html>
